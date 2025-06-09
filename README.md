@@ -13,8 +13,8 @@
   https://hub.docker.com/r/raishmomin/backend-tutedude
 
 
-#### Docker hub Backend link 
-  https://hub.docker.com/r/raishmomin/backend-tutedude
+#### Seperate EC2 instance deploy url 
+  http://3.111.53.127:5000/
 
 
 #### ECR ECS VPC LINK FRONTEND
