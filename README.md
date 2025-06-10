@@ -10,11 +10,12 @@
 
 
 #### Single EC2 instance deployment 
-  https://hub.docker.com/r/raishmomin/backend-tutedude
+Fullstack:- http://13.201.192.59:3000/
 
 
 #### Seperate EC2 instance deploy url 
-  http://3.111.53.127:5000/
+Frontend :-  http://3.110.84.99:3000/
+Backend :-   http://3.109.59.199:5000/
 
 
 #### ECR ECS VPC LINK FRONTEND
