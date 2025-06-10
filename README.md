@@ -19,7 +19,7 @@ Backend :-   http://3.109.59.199:5000/
 
 
 #### ECR ECS VPC LINK FRONTEND
-  http://13.202.100.218:3000/
+  http://13.201.94.158:3000/
 
 #### ECR ECS VPC LINK BACKEND
-  http://65.2.122.22:5000/
+  http://13.201.94.158:5000/
