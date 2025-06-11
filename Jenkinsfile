@@ -40,12 +40,13 @@ pipeline {
             steps {
                 dir("${BACKEND_DIR}") {
                     sh '''
-                        sudo -u ubuntu pm2 restart flask-app || \
-                        sudo -u ubuntu pm2 start app.py --name flask-app
+                        sudo -u ubuntu pm2 delete flask-app || true
+                        sudo -u ubuntu pm2 start ./venv/bin/python --name flask-app -- app.py
                     '''
                 }
             }
         }
+
 
        stage('Deploy Express') {
             steps {
