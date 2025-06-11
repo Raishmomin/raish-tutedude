@@ -25,12 +25,13 @@ pipeline {
 
         stage('Install Flask Dependencies') {
             steps {
-                sh '''
-                    python3 -m venv venv
-                    . venv/bin/activate
-                    pip install -r requirements.txt
-                    '''
-
+                 dir("${BACKEND_DIR}") {
+                        sh '''
+                            python3 -m venv venv
+                            . venv/bin/activate
+                            pip install -r requirements.txt
+                            '''
+                 }
             }
         }
 
