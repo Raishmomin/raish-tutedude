@@ -36,6 +36,16 @@ pipeline {
             }
         }
 
+        stage('Deploy Flask') {
+            steps {
+                dir("${BACKEND_DIR}") {
+                    sh '''
+                        sudo -u ubuntu pm2 restart flask-app || sudo -u ubuntu pm2 start app.py --name flask-app
+                    '''
+                }
+            }
+        }
+
         stage('Deploy Express') {
             steps {
                 dir("${FRONTEND_DIR}") {
@@ -46,17 +56,6 @@ pipeline {
                         # Ensure server.js loads .env
                         sudo -u ubuntu pm2 restart express-app || \
                         sudo -u ubuntu pm2 start server.js --name express-app
-                    '''
-                }
-            }
-        }
-
-
-        stage('Deploy Flask') {
-            steps {
-                dir("${BACKEND_DIR}") {
-                    sh '''
-                        sudo -u ubuntu pm2 restart flask-app || sudo -u ubuntu pm2 start app.py --name flask-app
                     '''
                 }
             }
