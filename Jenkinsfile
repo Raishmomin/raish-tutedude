@@ -40,23 +40,24 @@ pipeline {
             steps {
                 dir("${BACKEND_DIR}") {
                     sh '''
-                        sudo -u ubuntu pm2 restart flask-app || sudo -u ubuntu pm2 start app.py --name flask-app
+                        sudo -u ubuntu pm2 restart flask-app || \
+                        sudo -u ubuntu pm2 start app.py --name flask-app
                     '''
                 }
             }
         }
 
-    //    stage('Deploy Express') {
-    //         steps {
-    //             dir("${FRONTEND_DIR}") {
-    //                 sh '''
-    //                     echo "API_URL=${API_URL}" > .env
-    //                     sudo -u ubuntu pm2 restart express-app || \
-    //                     sudo -u ubuntu pm2 start server.js --name express-app
-    //                 '''
-    //             }
-    //         }
-    //     }
+       stage('Deploy Express') {
+            steps {
+                dir("${FRONTEND_DIR}") {
+                    sh '''
+                        echo "API_URL=${API_URL}" > .env
+                        sudo -u ubuntu pm2 restart express-app || \
+                        sudo -u ubuntu pm2 start server.js --name express-app
+                    '''
+                }
+            }
+        }
 
     }
 }
