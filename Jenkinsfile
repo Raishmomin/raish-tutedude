@@ -40,8 +40,12 @@ pipeline {
             steps {
                 dir("${FRONTEND_DIR}") {
                     sh '''
+                       # Create .env file with API_URL
+                        echo "API_URL=http://43.204.36.137:5000" > .env
+
+                        # Ensure server.js loads .env
                         sudo -u ubuntu pm2 restart express-app || \
-                        API_URL="http://43.204.36.137:5000" sudo -u ubuntu pm2 start server.js --name express-app
+                        sudo -u ubuntu pm2 start server.js --name express-app
                     '''
                 }
             }
