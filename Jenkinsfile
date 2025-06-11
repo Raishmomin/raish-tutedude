@@ -60,12 +60,12 @@ pipeline {
         //     }
         // }
 
-        stage('Deploy List') {
-            steps {
-                dir("${BACKEND_DIR}") {
-                    sh 'pm2 logs express-app'
-                }
-            }
-        }
+        // stage('Deploy List') {
+        //     steps {
+        //         dir("${BACKEND_DIR}") {
+        //             sh 'pm2 logs express-app'
+        //         }
+        //     }
+        // }
     }
 }
