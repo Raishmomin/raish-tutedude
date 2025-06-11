@@ -4,6 +4,7 @@ pipeline {
     environment {
         FRONTEND_DIR = "frontend"
         BACKEND_DIR = "backend"
+        API_URL="http://http://43.204.36.137:5000"
     }
 
     stages {
@@ -35,12 +36,6 @@ pipeline {
             }
         }
 
-        stage('Deploy Lists') {
-            steps {
-                sh 'sudo -u ubuntu pm2 list'
-            }
-        }
-
         stage('Deploy Express') {
             steps {
                 dir("${FRONTEND_DIR}") {
@@ -56,6 +51,17 @@ pipeline {
                 dir("${BACKEND_DIR}") {
                     sh '''
                         sudo -u ubuntu pm2 restart flask-app || sudo -u ubuntu pm2 start app.py --name flask-app
+                    '''
+                }
+            }
+        }
+        
+        stage('Start All Apps with PM2') {
+            steps {
+                dir('.') {
+                    sh '''
+                        pm2 startOrRestart ecosystem.config.js --env production
+                        pm2 save
                     '''
                 }
             }
