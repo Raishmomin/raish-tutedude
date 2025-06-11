@@ -52,18 +52,18 @@ pipeline {
             }
         }
 
-        stage('Deploy Flask') {
-            steps {
-                dir("${BACKEND_DIR}") {
-                    sh 'pm2 restart flask-app || pm2 start app.py --name flask-app'
-                }
-            }
-        }
+        // stage('Deploy Flask') {
+        //     steps {
+        //         dir("${BACKEND_DIR}") {
+        //             sh 'pm2 restart flask-app || pm2 start app.py --name flask-app'
+        //         }
+        //     }
+        // }
 
         stage('Deploy List') {
             steps {
                 dir("${BACKEND_DIR}") {
-                    sh 'pm2 list'
+                    sh 'pm2 logs express-app'
                 }
             }
         }
