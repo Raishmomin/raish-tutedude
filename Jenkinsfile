@@ -35,7 +35,7 @@ pipeline {
             }
         }
 
-        stage('Deploy List') {
+        stage('Deploy Lists') {
             steps {
                 dir("${BACKEND_DIR}") {
                     sh 'pm2 list'
