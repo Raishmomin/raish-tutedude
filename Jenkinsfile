@@ -25,45 +25,38 @@ pipeline {
 
         stage('Install Flask Dependencies') {
             steps {
-                 dir("${BACKEND_DIR}") {
-                        sh '''
-                            python3 -m venv venv
-                            . venv/bin/activate
-                            pip install -r requirements.txt
-                            '''
-                 }
+                dir("${BACKEND_DIR}") {
+                    sh '''
+                        python3 -m venv venv
+                        . venv/bin/activate
+                        pip install -r requirements.txt
+                    '''
+                }
             }
         }
 
         stage('Deploy Lists') {
             steps {
-                dir("${BACKEND_DIR}") {
-                    sh 'pm2 list'
-                }
+                sh 'sudo -u ubuntu pm2 list'
             }
         }
-
 
         stage('Deploy Express') {
             steps {
                 dir("${FRONTEND_DIR}") {
-                    sh 'pm2 restart express-app || pm2 start server.js --name express-app'
+                    sh '''
+                        sudo -u ubuntu pm2 restart express-app || sudo -u ubuntu pm2 start server.js --name express-app
+                    '''
                 }
             }
         }
 
-        // stage('Deploy Flask') {
-        //     steps {
-        //         dir("${BACKEND_DIR}") {
-        //             sh 'pm2 restart flask-app || pm2 start app.py --name flask-app'
-        //         }
-        //     }
-        // }
-
-        stage('Deploy List') {
+        stage('Deploy Flask') {
             steps {
                 dir("${BACKEND_DIR}") {
-                    sh 'pm2 logs express-app'
+                    sh '''
+                        sudo -u ubuntu pm2 restart flask-app || sudo -u ubuntu pm2 start app.py --name flask-app
+                    '''
                 }
             }
         }
