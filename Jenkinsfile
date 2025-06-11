@@ -1,15 +1,21 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'node-18'  // This should match the name you set in Jenkins
+    }
+
     environment {
-        FRONTEND_DIR = "raish-tutedude/frontend"
-        BACKEND_DIR = "raish-tutedude/backend"
+        FRONTEND_DIR = "frontend"
+        BACKEND_DIR = "backend"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Raishmomin/raish-tutedude'
+                dir('.') {
+                    git 'https://github.com/Raishmomin/raish-tutedude'
+                }
             }
         }
 
