@@ -25,16 +25,19 @@ pipeline {
 
         stage('Install Flask Dependencies') {
             steps {
-                dir("${BACKEND_DIR}") {
-                    sh 'pip install -r requirements.txt'
-                }
+                sh '''
+                python3 -m venv venv
+                source venv/bin/activate
+                pip install -r backend/requirements.txt
+                '''
             }
         }
+
 
         stage('Deploy Express') {
             steps {
                 dir("${FRONTEND_DIR}") {
-                    sh 'pm2 restart express-app || pm2 start app.js --name express-app'
+                    sh 'pm2 restart express-app || pm2 start server.js --name express-app'
                 }
             }
         }
