@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        FRONTEND_DIR = "raish-tutedude/frontend"
-        BACKEND_DIR = "raish-tutedude/backend"
+        FRONTEND_DIR = "frontend"
+        BACKEND_DIR = "backend"
     }
 
     stages {
