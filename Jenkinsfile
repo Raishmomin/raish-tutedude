@@ -40,28 +40,19 @@ pipeline {
             steps {
                 dir("${FRONTEND_DIR}") {
                     sh '''
-                        sudo -u ubuntu pm2 restart express-app || sudo -u ubuntu pm2 start server.js --name express-app
+                        sudo -u ubuntu pm2 restart express-app || \
+                        API_URL="http://43.204.36.137:5000" sudo -u ubuntu pm2 start server.js --name express-app
                     '''
                 }
             }
         }
+
 
         stage('Deploy Flask') {
             steps {
                 dir("${BACKEND_DIR}") {
                     sh '''
                         sudo -u ubuntu pm2 restart flask-app || sudo -u ubuntu pm2 start app.py --name flask-app
-                    '''
-                }
-            }
-        }
-        
-        stage('Start All Apps with PM2') {
-            steps {
-                dir('.') {
-                    sh '''
-                        pm2 startOrRestart ecosystem.config.js --env production
-                        pm2 save
                     '''
                 }
             }
