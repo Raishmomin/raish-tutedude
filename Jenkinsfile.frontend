@@ -4,7 +4,7 @@ pipeline {
     environment {
         FRONTEND_DIR = "frontend"
         BACKEND_DIR = "backend"
-        API_URL="http://43.204.36.137:5000"
+        API_URL="http://13.233.4.165:5000"
     }
 
     stages {
