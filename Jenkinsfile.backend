@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 dir('.') {
-                    git 'https://github.com/Raishmomin/raish-tutedude'
+                    git branch: 'master-backend', url: 'https://github.com/Raishmomin/raish-tutedude'
                 }
             }
         }
