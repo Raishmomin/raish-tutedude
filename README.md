@@ -8,6 +8,7 @@
   - Flask running on port `http://3.111.33.172:5000/`
   - Express running on port `http://3.111.33.172:3000/`
 - **Process Manager**: PM2
+- **Screenshots**: Screenshots are stored in screenshot folder
 
 ---
 
