@@ -3,10 +3,10 @@
 ## 🔧 Environment Setup
 
 - **EC2 Instance**: Ubuntu 22.04 (Free-tier eligible)
-- **Public IP**: http://3.111.33.172
+- **Public IP**: http://13.203.66.18
 - **Applications**:
-  - Flask running on port `http://3.111.33.172:5000/`
-  - Express running on port `http://3.111.33.172:3000/`
+  - Flask running on port `http://13.203.66.18:5000/`
+  - Express running on port `http://13.203.66.18:3000/`
 - **Process Manager**: PM2
 - **Screenshots**: Screenshots are stored in screenshot folder
 
@@ -47,7 +47,7 @@ sudo -u ubuntu pm2 start ./venv/bin/python --name flask-app -- app.py
 cd ..
 cd frontend
 npm install
-echo "API_URL=http://3.111.33.172:5000/" > .env
+echo "API_URL=http://13.203.66.18:5000/" > .env
 sudo -u ubuntu pm2 start server.js --name express-app
 ```
 
