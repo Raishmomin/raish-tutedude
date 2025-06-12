@@ -68,15 +68,15 @@ sudo systemctl enable jenkins
 ###  CI/CD pipeline setup
 
 - **EC2 Instance**: Ubuntu 22.04 (Free-tier eligible)
-- **Public IP**: http://13.233.4.165
+- **Public IP**: http://3.6.126.176
 - **Applications**:
-  - Flask running on port `http://13.233.4.165:5000`
-  - Express running on port `http://13.233.4.165:3000`
+  - Flask running on port `http://3.6.126.176:5000`
+  - Express running on port `http://3.6.126.176:3000`
 - **Process Manager**: PM2
 
 ## Install Required Jenkins Plugins
 
-After installing and logging into Jenkins at `http://13.233.4.165:8080`, follow these steps to install the required plugins:
+After installing and logging into Jenkins at `http://3.6.126.176:8080`, follow these steps to install the required plugins:
 
 1. Click on **Manage Jenkins** from the left sidebar.
 2. Go to **Manage Plugins**.
